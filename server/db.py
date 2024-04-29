@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS sensorsdata(
 
 def insert(temp, hum, soil, height):
     if temp != None and hum != None and soil!= None and height!= None:
-        cursor.execute("INSERT INTO sensorsdata(time, temperature, humidity, soil_moisture, height) VALUES (now(), %f, %f, %d, %f)", (temp, hum, soil, height))
+        cursor.execute("INSERT INTO sensorsdata(time, temperature, humidity, soil_moisture, height) VALUES (now(), {0}, {1}, {2}, {3})".format(temp, hum, soil, height))
     else:
         cursor.execute("INSERT INTO sensorsdata(time, temperature, humidity, soil_moisture, height) VALUES (now(), NULL, NULL, {2}, {3})".format(temp, hum, soil, height))
     conn.commit()
